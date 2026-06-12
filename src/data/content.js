@@ -1,7 +1,7 @@
 export const data={
     name: "Yessine Helal",
     title: "IT Student & Cybersecurity Enthusiast",
-    bio: "Graduate in Software Engineering from FST, Tunisia. Spent the last year building a national-scale healthcare platform for the Tunisian Ministry of Health. Now focused on cybersecurity engineering.",
+    bio: "Started with video games, ended up obsessed with how systems work under the hood. That curiosity led through software engineering and into cybersecurity - a field where the complexity and constant evolution means there's always something new to learn.",
     email: "yessinehelal@hotmail.com",
     location: "Ariana, Tunisia",
     github: "https://github.com/Yessineee",
@@ -25,6 +25,13 @@ export const data={
         demo: null,
         confidential: true,
         featured: true,
+        screenshots: [
+          { src: "/screenshots/admin-dashboard.png", label: "Admin Dashboard — National Overview" },
+          { src: "/screenshots/ministry-stats.png", label: "Ministry Statistics — National View" },
+          { src: "/screenshots/patient-dashboard.png", label: "Patient — Personal Dashboard" },
+          { src: "/screenshots/medecin-fiche.png", label: "Médecin — Patient Medical Record" },
+          { src: "/screenshots/infirmier-dashboard.png", label: "Infirmier — Session Management" },
+        ],
       },
       {
         title: "Intelligent Chatbot System",

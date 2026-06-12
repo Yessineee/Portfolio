@@ -12,7 +12,6 @@ export default function About() {
     return (
         <section id="about" className="px-14 py-24 border-b border-white/5 relative z-10">
 
-      {/* Section header */}
       <div className="mb-14" ref={headerRef}>
         <p
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
@@ -28,20 +27,16 @@ export default function About() {
         </h2>
       </div>
 
-      {/* Two column grid */}
       <div className="grid gap-28" style={{ gridTemplateColumns: "1fr 480px" }}>
 
-        {/* Left — bio */}
         <div ref={leftRef}>
           <p
             className="text-[15px] text-[#8898c8] leading-[1.9] mb-6"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {data.bio}
-            {/* Your bio from content.js — write this yourself! */}
           </p>
 
-          {/* Languages */}
           <div className="mt-14 pt-14 border-t border-white/5" ref={langRef}>
             <p
               className="text-[11px] text-[#4a5a8a] tracking-[3px] uppercase mb-5"
@@ -77,7 +72,6 @@ export default function About() {
         </div>
 
 
-        {/* Right — info table */}
         <div ref={rightRef}>
           <div className="flex flex-col pl-8 border-l border-[#5b8ef5]/20">
             {[
@@ -103,8 +97,7 @@ export default function About() {
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {row.val}
-                  {/* accent rows show in blue — Status and Achievement
-                      stand out from the regular info rows */}
+                  
                 </span>
               </div>
             ))}

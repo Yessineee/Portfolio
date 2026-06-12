@@ -1,6 +1,8 @@
 import { ArrowUpRight } from "lucide-react"
 import {data} from "../data/content";
 import useScrollReveal from "../hooks/useScrollReveal"
+import ProjectGallery from "./ProjectGallery"
+
 
 
 export default function Projects() {
@@ -91,6 +93,10 @@ export default function Projects() {
                 ))}
               </div>
 
+              {project.screenshots && (
+                <ProjectGallery images={project.screenshots} />
+              )}
+
             </div>
 
             {/* Right — links */}
@@ -126,8 +132,7 @@ export default function Projects() {
                 >
                   Private repo
                 </span>
-                // Shows "Private repo" instead of leaving the right
-                // column completely empty for confidential projects.
+                
               )}
             </div>
 

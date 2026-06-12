@@ -25,7 +25,6 @@ export default function Certifications() {
   return (
         <section id="certifications" className="px-14 py-24 border-b border-white/5 relative z-10">
 
-      {/* Section header */}
       <div className="mb-14" ref={headerRef}>
         <p
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
@@ -41,7 +40,6 @@ export default function Certifications() {
         </h2>
       </div>
 
-      {/* Certifications grid */}
       <div className="grid grid-cols-2 gap-px bg-white/5" ref={gridRef}>
         
 
@@ -54,7 +52,6 @@ export default function Certifications() {
               className="bg-[#06080f] hover:bg-[#0b0e1a] transition-colors duration-300 p-8 flex flex-col gap-3"
             >
 
-              {/* Issuer name */}
               <span
                 className="text-[10px] tracking-[2px] uppercase font-medium"
                 style={{
@@ -66,7 +63,6 @@ export default function Certifications() {
                 {cert.issuer}
               </span>
 
-              {/* Cert name */}
               <h3
                 className="text-[15px] font-normal text-[#d8e0f5] leading-[1.4]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
@@ -74,7 +70,6 @@ export default function Certifications() {
                 {cert.name}
               </h3>
 
-              {/* Footer — date + link */}
               <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
                 <span
                   className="text-[11px] text-[#4a5a8a]"
@@ -102,7 +97,6 @@ export default function Certifications() {
         })}
       </div>
 
-      {/* Bottom note */}
       <div className="mt-12 flex items-center gap-4" ref={bottomRef}>
         <div className="flex-1 h-px bg-white/5" />
         <span

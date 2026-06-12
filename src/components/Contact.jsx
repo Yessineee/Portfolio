@@ -32,7 +32,6 @@ export default function Contact() {
   return (
     <section id="contact" className="px-14 py-24 border-b border-white/5 relative z-10">
 
-      {/* Section header */}
       <div className="mb-14" ref={headerRef}>
         <p
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
@@ -48,22 +47,18 @@ export default function Contact() {
         </h2>
       </div>
 
-      {/* Two column layout */}
       <div className="grid gap-20" style={{ gridTemplateColumns: "1fr 1fr" }}>
 
-        {/* Left — info */}
         <div ref={leftRef}>
           <p
             className="text-[15px] text-[#8898c8] leading-[1.9] mb-6 max-w-sm"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            {/* Rewrite this in your own words — keep it honest and direct. */}
             Looking for internship opportunities in cybersecurity or
             software engineering. Open to collaborations and
             interesting projects.
           </p>
 
-          {/* Contact links */}
           <div className="flex flex-col">
             {[
               { label: "Email", value: data.email, href: `mailto:${data.email}`, icon: Mail },
@@ -102,11 +97,9 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right — form */}
         <div ref={rightRef}>
           <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
 
-            {/* Name */}
             <div className="flex flex-col gap-2">
             <label
               className="text-[10px] text-[#4a5a8a] tracking-[2px] uppercase"
@@ -124,7 +117,6 @@ export default function Contact() {
             />
             </div>
 
-            {/* Email */}
             <div className="flex flex-col gap-2">
             <label
               className="text-[10px] text-[#4a5a8a] tracking-[2px] uppercase"
@@ -142,7 +134,6 @@ export default function Contact() {
             />
             </div>
 
-            {/* Message */}
             <div className="flex flex-col gap-2">
             <label
               className="text-[10px] text-[#4a5a8a] tracking-[2px] uppercase"
@@ -160,7 +151,6 @@ export default function Contact() {
             />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={status === "sending"}
@@ -170,7 +160,6 @@ export default function Contact() {
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* Status messages */}
             {status === "success" && (
               <p
                 className="flex items-center justify-center gap-2 text-[12px] text-center text-[#5af078] tracking-[1px]"
