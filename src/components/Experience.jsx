@@ -7,7 +7,7 @@ export default function Experience() {
   const timelineRef = useScrollReveal({ delay: "0.15s", distance: "32px" })
 
     return (
-        <section id="experience" className="px-14 py-24 border-b border-white/5 relative z-10">
+      <section id="experience" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
       {/* Section header */}
       <div className="mb-14" ref={headerRef}>
@@ -30,8 +30,7 @@ export default function Experience() {
         {data.education.map((edu, index) => (
           <div
             key={index}
-            className="grid gap-10 py-9 border-b border-white/5 first:border-t first:border-white/5 items-start"
-            style={{ gridTemplateColumns: "160px 1fr" }}
+            className="grid gap-3 md:gap-10 py-9 border-b border-white/5 first:border-t first:border-white/5 items-start grid-cols-1 md:grid-cols-[160px_1fr]"
           >
             {/* Period */}
             <span

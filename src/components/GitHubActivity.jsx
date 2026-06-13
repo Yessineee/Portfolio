@@ -12,8 +12,7 @@ export default function GitHubActivity() {
   const ref = useScrollReveal({ delay: "0.3s", distance: "32px" })
 
   useEffect(() => {
-    // Fetch both APIs in parallel using Promise.all —
-    // more efficient than fetching one after the other.
+    
     Promise.all([
       fetch(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`)
         .then(r => r.json()),
@@ -30,7 +29,6 @@ export default function GitHubActivity() {
         }
         setWeeks(grouped)
         setTotal(contribData.total.lastYear)
-        // Use the API's own total — more accurate than summing manually.
         setProfile(profileData)
         setLoading(false)
       })
@@ -38,8 +36,7 @@ export default function GitHubActivity() {
   }, [])
 
   const getColor = (level) => {
-    // Use level (0-4) instead of count for more accurate coloring —
-    // GitHub itself uses level to determine square color.
+    
     if (level === 0) return "bg-white/[0.04]"
     if (level === 1) return "bg-[#1e3a5f]"
     if (level === 2) return "bg-[#2d5f9e]"
@@ -58,7 +55,7 @@ export default function GitHubActivity() {
 
       {/* Header + stats row */}
       <div className="mb-4">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
           <p
             className="text-[11px] text-[#6b7db3] tracking-[3px] uppercase"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -67,7 +64,7 @@ export default function GitHubActivity() {
           </p>
 
           {profile && (
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 md:gap-6 flex-wrap">
               {[
                 { label: "Public Repos", value: profile.public_repos },
                 { label: "Contributions", value: total },
@@ -103,7 +100,7 @@ export default function GitHubActivity() {
       </div>
 
       {/* Month labels */}
-      <div className="flex gap-[3px] w-full mb-1">
+      <div className="hidden sm:flex gap-[3px] w-full mb-1">
         {weeks.map((week, wi) => {
           const firstDay = week[0]?.date
           const date = new Date(firstDay)

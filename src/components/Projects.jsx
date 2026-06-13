@@ -10,7 +10,7 @@ export default function Projects() {
   const listRef = useScrollReveal({ delay: "0.15s", distance: "32px" })
 
     return (
-        <section id="projects" className="px-14 py-24 border-b border-white/5 relative z-10">
+      <section id="projects" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
       {/* Section header */}
       <div className="mb-14" ref={headerRef}>
@@ -34,8 +34,7 @@ export default function Projects() {
         {data.projects.map((project, index) => (
           <div
             key={index}
-            className="grid gap-10 px-8 py-9 bg-[#06080f] hover:bg-[#0b0e1a] transition-colors duration-300 items-start"
-            style={{ gridTemplateColumns: "1fr 180px" }}
+            className="grid gap-6 px-4 md:px-8 py-7 md:py-9 bg-[#06080f] hover:bg-[#0b0e1a] transition-colors duration-300 items-start grid-cols-1 md:grid-cols-[1fr_180px]"
           >
             {/* Left — project info */}
             <div>
@@ -100,7 +99,7 @@ export default function Projects() {
             </div>
 
             {/* Right — links */}
-            <div className="flex flex-col gap-3 items-end pt-1">
+            <div className="flex flex-row md:flex-col gap-4 md:gap-3 items-start md:items-end pt-1 flex-wrap">
               {project.github && (
                 <a
                   href={project.github}
@@ -127,7 +126,7 @@ export default function Projects() {
               )}
               {project.confidential && !project.github && !project.demo && (
                 <span
-                  className="text-[11px] text-[#4a5a8a] tracking-[1.5px] uppercase text-right"
+                  className="text-[11px] text-[#4a5a8a] tracking-[1.5px] uppercase text-left md:text-right"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
                   Private repo

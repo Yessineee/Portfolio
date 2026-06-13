@@ -10,7 +10,7 @@ export default function About() {
 
 
     return (
-        <section id="about" className="px-14 py-24 border-b border-white/5 relative z-10">
+      <section id="about" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
       <div className="mb-14" ref={headerRef}>
         <p
@@ -27,7 +27,7 @@ export default function About() {
         </h2>
       </div>
 
-      <div className="grid gap-28" style={{ gridTemplateColumns: "1fr 480px" }}>
+      <div className="grid gap-12 lg:gap-28 grid-cols-1 lg:grid-cols-[1fr_480px]">
 
         <div ref={leftRef}>
           <p
@@ -73,7 +73,7 @@ export default function About() {
 
 
         <div ref={rightRef}>
-          <div className="flex flex-col pl-8 border-l border-[#5b8ef5]/20">
+          <div className="flex flex-col pl-0 lg:pl-8 border-l-0 lg:border-l border-[#5b8ef5]/20">
             {[
               { key: "Location", val: data.location, accent: false },
               { key: "Degree", val: "B.Sc. Software Engineering & Information Systems", accent: false },
@@ -84,7 +84,7 @@ export default function About() {
             ].map((row, index) => (
               <div
                 key={index}
-                className="flex items-baseline justify-between gap-6 py-4 border-b border-white/5 first:border-t first:border-white/5"
+                className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-4 border-b border-white/5 first:border-t first:border-white/5"
               >
                 <span
                   className="text-[11px] text-[#4a5a8a] tracking-[2px] uppercase shrink-0"
@@ -93,7 +93,7 @@ export default function About() {
                   {row.key}
                 </span>
                 <span
-                  className={`text-[13px] text-right ${row.accent ? "text-[#7aaaff]" : "text-[#d8e0f5]"}`}
+                  className={`text-[13px] text-left sm:text-right ${row.accent ? "text-[#7aaaff]" : "text-[#d8e0f5]"}`}
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {row.val}

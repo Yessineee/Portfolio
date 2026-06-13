@@ -30,7 +30,7 @@ export default function Contact() {
     }
   }
   return (
-    <section id="contact" className="px-14 py-24 border-b border-white/5 relative z-10">
+      <section id="contact" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
       <div className="mb-14" ref={headerRef}>
         <p
@@ -47,7 +47,7 @@ export default function Contact() {
         </h2>
       </div>
 
-      <div className="grid gap-20" style={{ gridTemplateColumns: "1fr 1fr" }}>
+      <div className="grid gap-12 lg:gap-20 grid-cols-1 lg:grid-cols-2">
 
         <div ref={leftRef}>
           <p

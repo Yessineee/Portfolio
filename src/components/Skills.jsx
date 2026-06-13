@@ -9,7 +9,7 @@ export default function Skills() {
     const bottomRef = useScrollReveal({ delay: "0.25s", distance: "32px" })
 
     return (
-        <section id="skills" className="px-14 py-24 border-b border-white/5 relative z-10">
+        <section id="skills" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
         {/* Section header */}
         <div className="mb-14" ref={headerRef}>
@@ -32,8 +32,7 @@ export default function Skills() {
             {data.skills.map((group, index) => (
             <div
                 key={index}
-                className="grid gap-8 py-5 border-b border-white/5 first:border-t first:border-white/5 items-center"
-                style={{ gridTemplateColumns: "160px 1fr" }}
+                className="grid gap-3 md:gap-8 py-5 border-b border-white/5 first:border-t first:border-white/5 items-start md:items-center grid-cols-1 md:grid-cols-[160px_1fr]"
             >
                 {/* Category label */}
                 <span

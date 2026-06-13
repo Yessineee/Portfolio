@@ -10,7 +10,7 @@ export default function Footer() {
   const footerRef = useScrollReveal({ delay: "0s", distance: "16px" })
 
   return (
-    <footer className="px-14 py-7 flex items-center justify-between relative z-10" ref={footerRef}>
+      <footer className="px-6 md:px-14 py-7 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10" ref={footerRef}>
 
       {/* Logo */}
       <div
@@ -22,14 +22,14 @@ export default function Footer() {
 
       {/* Copyright */}
       <div
-        className="text-[11px] text-[#4a5a8a] tracking-[1px]"
+        className="text-[11px] text-[#4a5a8a] tracking-[1px] text-center order-3 md:order-2"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
-        © {year} — Designed & built by Yessine Helal
+        © {year} - Designed & built by Yessine Helal
       </div>
 
       {/* Links */}
-      <div className="flex items-center gap-7">
+      <div className="flex items-center gap-7 order-2 md:order-3">
         {[
           { label: "GitHub", href: data.github, icon: FolderCode },
           { label: "LinkedIn", href: data.linkedin, icon: FaLinkedinIn },

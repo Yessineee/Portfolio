@@ -5,6 +5,8 @@ import { data } from "../data/content"
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState("about")
+    const [mobileOpen, setMobileOpen] = useState(false)
+
 
 
     useEffect(() => {
@@ -15,22 +17,17 @@ export default function Navbar() {
 
     useEffect(() => {
       const sections = ["about", "skills", "projects", "experience", "certifications", "contact"]
-      // List of all section IDs to observe.
 
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               setActiveSection(entry.target.id)
-              // When a section enters the viewport, mark it as active.
             }
           })
         },
         { rootMargin: "-50% 0px -50% 0px" }
-        // rootMargin shrinks the observation area to a thin horizontal line
-        // at the VERTICAL CENTER of the viewport.
-        // A section is only "active" when it crosses this center line —
-        // much more accurate than triggering on any visibility.
+        
       )
 
       sections.forEach((id) => {
@@ -42,9 +39,9 @@ export default function Navbar() {
     }, [])
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 h-16 px-14 flex items-center justify-between border-b border-white/5 backdrop-blur-xl transition-all duration-300 ${
-      scrolled ? "bg-[#06080f]/90" : "bg-transparent"
-    }`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 h-16 px-6 md:px-14 flex items-center justify-between border-b border-white/5 backdrop-blur-xl transition-all duration-300 ${
+        scrolled ? "bg-[#06080f]/90" : "bg-transparent"
+      }`}>
       
 
       <div
@@ -56,7 +53,7 @@ export default function Navbar() {
       </div>
 
       {/* Nav links */}
-      <ul className="flex gap-10 list-none">
+      <ul className="hidden md:flex gap-10 list-none">
         {["About", "Skills", "Projects", "Experience", "Certifications", "Contact"].map((item) => {
           const id = item.toLowerCase()
           const isActive = activeSection === id
@@ -78,7 +75,7 @@ export default function Navbar() {
       </ul>
 
       {/* Status indicator */}
-      <div className="flex items-center gap-2">
+      <div className="hidden md:flex items-center gap-2">
         <div className="w-1.5 h-1.5 rounded-full bg-[#7aaaff] shadow-[0_0_8px_rgba(122,170,255,0.8)] animate-pulse" />
         
         <span
@@ -88,7 +85,53 @@ export default function Navbar() {
           Open to internships
         </span>
       </div>
+        
+      {/* Hamburger button — mobile only */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden flex flex-col gap-[5px] w-6 h-6 items-center justify-center"
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-5 h-[1.5px] bg-[#d8e0f5] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+          <span className={`block w-5 h-[1.5px] bg-[#d8e0f5] transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-[1.5px] bg-[#d8e0f5] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+        </button>
 
-    </nav>
-    );
+        {/* Mobile menu overlay */}
+        {mobileOpen && (
+          <div className="md:hidden fixed inset-x-0 top-16 bottom-0 z-[60] overflow-x-auto overflow-y-hidden bg-[#06080f]/98 px-6 py-8 pb-12 backdrop-blur-xl">
+          <div className="flex min-w-max items-center gap-4 pb-12 pt-1 pr-4">
+            {["About", "Skills", "Projects", "Experience", "Certifications", "Contact"].map((item) => {
+              const id = item.toLowerCase()
+              const isActive = activeSection === id
+              return (
+                <a
+                  key={item}
+                  href={`#${id}`}
+                  onClick={() => setMobileOpen(false)}
+                  className={`flex-shrink-0 rounded-md px-4 py-3 text-[14px] sm:text-[16px] tracking-[2px] uppercase transition-colors duration-200 ${
+                    isActive ? "text-[#7aaaff]" : "text-[#8898c8]"
+                  }`}
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  {item}
+                </a>
+              )
+            })}
+
+            <div className="flex flex-shrink-0 items-center gap-2 px-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#7aaaff] shadow-[0_0_8px_rgba(122,170,255,0.8)] animate-pulse" />
+              <span
+                className="text-[11px] text-[#7aaaff] tracking-[1px]"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                Open to internships
+              </span>
+            </div>
+            </div>
+          </div>
+        )}
+
+      </nav>
+      );
 }

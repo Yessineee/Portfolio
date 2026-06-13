@@ -18,7 +18,7 @@ export default function ProjectGallery({ images }) {
           style={{ scrollbarWidth: "none" }}
         >
           {images.map((img, i) => (
-            <div key={i} className="flex-shrink-0 w-[340px]">
+          <div key={i} className="flex-shrink-0 w-[260px] md:w-[340px]">
               <button
                 onClick={() => setSelected(img)}
                 className="block w-full rounded-lg overflow-hidden border border-white/[0.06] hover:border-[#5b8ef5]/30 transition-all duration-200 cursor-zoom-in"
@@ -60,7 +60,7 @@ export default function ProjectGallery({ images }) {
       {selected && (
         <div
           onClick={() => setSelected(null)}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] flex items-center justify-center p-8 cursor-zoom-out"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] flex items-center justify-center p-4 md:p-8 cursor-zoom-out"
           
         >
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>

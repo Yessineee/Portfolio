@@ -39,7 +39,8 @@ export default function Hero() {
   }, [displayed, deleting, titleIndex])
 
     return (
-        <section className="relative min-h-screen pt-16 px-14 pb-0 flex flex-col border-b border-white/5 overflow-hidden">
+        <section className="relative min-h-screen pt-16 px-6 md:px-14 pb-0 flex flex-col border-b border-white/5 overflow-hidden">
+
       
         {/* Ambient orbs */}
         <div className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] rounded-full pointer-events-none"
@@ -50,7 +51,7 @@ export default function Hero() {
 
         {/* Main content */}
         <div className="flex-1 flex items-center">
-            <div className="grid w-full gap-12" style={{ gridTemplateColumns: "1fr 360px" }}>
+            <div className="grid w-full gap-10 lg:gap-12 grid-cols-1 lg:grid-cols-[1fr_360px]">
 
             {/* Left — text */}
             <div className="flex flex-col justify-center">
@@ -69,7 +70,7 @@ export default function Hero() {
                 {/* Name */}
                 <h1
                 className="font-light leading-[0.9] tracking-[-4px] mb-8 text-[#d8e0f5]"
-                style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(68px, 7.5vw, 108px)" }}
+                style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(48px, 13vw, 108px)" }}
                 >
                 Yessine
                 <br />
@@ -117,7 +118,7 @@ export default function Hero() {
             </div>
 
             {/* Right — Terminal */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center mt-8 lg:mt-0">
                 <div className="w-full rounded-xl overflow-hidden border border-white/[0.06] shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
                 style={{ background: "#0b0e1a" }}>
 
@@ -190,7 +191,7 @@ export default function Hero() {
         {/* Bottom status strip */}
         <div className="border-t border-white/5 py-5 mt-10">
             <p
-            className="text-center text-[11px] text-[#4a5a8a] tracking-[2px]"
+            className="text-center text-[10px] md:text-[11px] text-[#4a5a8a] tracking-[2px] leading-[2] px-2"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
             Graduate of Faculty of Science of Tunis
@@ -199,8 +200,7 @@ export default function Hero() {
             <span className="mx-4 text-[#1a2040]">·</span>
             Certified by AWS · Cisco · NVIDIA
             </p>
-            {/* A single clean status line instead of generic stat boxes.
-                Tells a story in one line — unique, informative, not templated. */}
+            
         </div>
 
         </section>

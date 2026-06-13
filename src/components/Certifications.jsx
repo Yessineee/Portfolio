@@ -23,7 +23,7 @@ export default function Certifications() {
   const bottomRef = useScrollReveal({ delay: "0.25s", distance: "32px" })
 
   return (
-        <section id="certifications" className="px-14 py-24 border-b border-white/5 relative z-10">
+      <section id="certifications" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
       <div className="mb-14" ref={headerRef}>
         <p
@@ -40,7 +40,7 @@ export default function Certifications() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 gap-px bg-white/5" ref={gridRef}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5" ref={gridRef}>
         
 
         {data.certifications.map((cert, index) => {
