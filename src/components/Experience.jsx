@@ -13,7 +13,6 @@ export default function Experience() {
     return (
       <section id="experience" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
-      {/* Section header */}
       <div className="mb-14" ref={headerRef}>
         <p
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
@@ -29,14 +28,12 @@ export default function Experience() {
         </h2>
       </div>
 
-      {/* Timeline */}
       <div className="flex flex-col" ref={timelineRef}>
         {data.education.map((edu, index) => (
           <div
             key={index}
             className="grid gap-3 md:gap-10 py-9 border-b border-white/5 first:border-t first:border-white/5 items-start grid-cols-1 md:grid-cols-[160px_1fr]"
           >
-            {/* Period */}
             <span
               className="text-[11px] text-[#4a5a8a] tracking-[1px] pt-1"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -44,7 +41,6 @@ export default function Experience() {
               {edu.period}
             </span>
 
-            {/* Content */}
             <div>
               <h3
                 className="text-[19px] font-normal text-[#d8e0f5] tracking-[-0.3px] mb-1"
@@ -66,7 +62,6 @@ export default function Experience() {
                
               </p>
 
-              {/* Achievement badge */}
               <div
                 className="inline-flex items-center gap-2 px-3 py-[5px] border border-[#5b8ef5]/20 bg-[#5b8ef5]/8 rounded-[4px]"
                 style={{ background: "rgba(91,142,245,0.06)" }}

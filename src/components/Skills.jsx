@@ -16,7 +16,6 @@ export default function Skills() {
     return (
         <section id="skills" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
 
-        {/* Section header */}
         <div className="mb-14" ref={headerRef}>
             <p
             className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
@@ -32,14 +31,12 @@ export default function Skills() {
             </h2>
         </div>
 
-        {/* Skills table */}
         <div className="flex flex-col" ref={tableRef}>
             {data.skills.map((group, index) => (
             <div
                 key={index}
                 className="grid gap-3 md:gap-8 py-5 border-b border-white/5 first:border-t first:border-white/5 items-start md:items-center grid-cols-1 md:grid-cols-[160px_1fr]"
             >
-                {/* Category label */}
                 <span
                 className="text-[11px] text-[#4a5a8a] tracking-[2px] uppercase"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -47,7 +44,6 @@ export default function Skills() {
                 {t.skills.categories[group.category]}   
                 </span>
 
-                {/* Skill chips */}
                 <div className="flex flex-wrap gap-2">
                 {group.items.map((skill, i) => (
                     <span
@@ -64,7 +60,6 @@ export default function Skills() {
             ))}
         </div>
 
-        {/* Bottom note */}
         <div className="mt-12 flex items-center gap-4" ref={bottomRef}>
             <div className="flex-1 h-px bg-white/5" />
             <span

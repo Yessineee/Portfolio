@@ -1,16 +1,82 @@
-# React + Vite
+# Yessine Helal — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Personal portfolio website showcasing my projects, skills, and experience as a Software Engineering graduate focused on cybersecurity.
 
-Currently, two official plugins are available:
+🔗 **Live site:** [yessine-helal.vercel.app](https://yessine-helal.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Bilingual (EN/FR)** — full language toggle across every section, including dynamic date formatting
+- **Responsive design** — mobile-first layout with a custom mobile navigation menu
+- **Live GitHub activity heatmap** — pulls real contribution data via the GitHub API
+- **Interactive project gallery** — horizontal scroll with a lightbox for full-size screenshots
+- **Working contact form** — powered by EmailJS, no backend required
+- **Scroll-reveal animations** — sections animate in as you scroll, via IntersectionObserver
+- **Active section highlighting** — navbar tracks the current section in view
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | React + Vite |
+| Styling | Tailwind CSS v4 |
+| Icons | Lucide React + React Icons |
+| Contact form | EmailJS |
+| Fonts | Fraunces, Inter, JetBrains Mono |
+| Deployment | Vercel |
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/     # Navbar, Hero, About, Skills, Projects, Experience,
+│                    Certifications, Contact, Footer, GitHubActivity, ProjectGallery
+├── context/         # Language context (EN/FR state)
+├── hooks/           # useScrollReveal, useLanguage
+├── data/            # content.js (profile data), translations.js (EN/FR strings)
+```
+
+---
+
+## Running Locally
+
+### Prerequisites
+
+- Node.js 18 or higher
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/Yessineee/Portfolio.git
+cd Portfolio
+
+# Install dependencies
+npm install
+
+# Add EmailJS environment variables
+echo "VITE_EMAILJS_SERVICE_ID=your_service_id" >> .env
+echo "VITE_EMAILJS_TEMPLATE_ID=your_template_id" >> .env
+echo "VITE_EMAILJS_PUBLIC_KEY=your_public_key" >> .env
+
+# Start dev server
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+---
+
+## License
+
+MIT © [Yessine Helal](https://github.com/Yessineee)

@@ -56,7 +56,6 @@ export default function Navbar() {
         
       </div>
 
-      {/* Nav links */}
       <ul className="hidden md:flex gap-10 list-none">
         {["about", "skills", "projects", "experience", "certifications", "contact"].map((id) => {
         const isActive = activeSection === id
@@ -76,9 +75,8 @@ export default function Navbar() {
       })}
       </ul>
 
-      {/* Status indicator */}
       <div className="hidden md:flex items-center gap-2">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#7aaaff] shadow-[0_0_8px_rgba(122,170,255,0.8)] animate-pulse" />
+        <div className="w-1.5 h-1.5 rounded-full bg-[#7aaaff] shadow-[0_0_8px_rgba(122,170,255,0.8)] animate-pulse mt-[-0.5px]" />
         
         <span
           className="text-[11px] text-[#7aaaff] tracking-[1px]"
@@ -97,7 +95,7 @@ export default function Navbar() {
               
       </button>
         
-      {/* Hamburger button — mobile only */}
+      {/* Mobile only */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden flex flex-col gap-[5px] w-6 h-6 items-center justify-center"
@@ -108,7 +106,6 @@ export default function Navbar() {
           <span className={`block w-5 h-[1.5px] bg-[#d8e0f5] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
         </button>
 
-        {/* Mobile menu overlay */}
         {mobileOpen && (
           <div className="md:hidden fixed inset-x-0 top-16 bottom-0 z-[60] overflow-x-auto overflow-y-hidden bg-[#06080f]/98 px-6 py-8 pb-12 backdrop-blur-xl">
           <div className="flex min-w-max items-center gap-4 pb-12 pt-1 pr-4">
@@ -131,7 +128,7 @@ export default function Navbar() {
             })}
 
             <div className="flex flex-shrink-0 items-center gap-2 px-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#7aaaff] shadow-[0_0_8px_rgba(122,170,255,0.8)] animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#7aaaff] shadow-[0_0_8px_rgba(122,170,255,0.8)] animate-pulse mt-[1px]" />
               <span
                 className="text-[11px] text-[#7aaaff] tracking-[1px]"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}

@@ -5,13 +5,6 @@ import { useLanguage } from "../hooks/useLanguage"
 import { translations } from "../data/translations"
 
 
-// const titles = [
-//     "IT Student & Cybersecurity Enthusiast",
-//     "Full-Stack Developer",
-//     "ML & AI Explorer",
-//     "Open Source Contributor",
-//     "CTF Player & Security Learner"
-// ]
 
 export default function Hero() {
     const [displayed, setDisplayed] = useState("")
@@ -55,21 +48,17 @@ export default function Hero() {
         <section className="relative min-h-screen pt-16 px-6 md:px-14 pb-0 flex flex-col border-b border-white/5 overflow-hidden">
 
       
-        {/* Ambient orbs */}
         <div className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(50,90,220,0.07) 0%, transparent 70%)" }} />
         <div className="absolute bottom-[5%] left-[-200px] w-[600px] h-[600px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(80,50,180,0.05) 0%, transparent 70%)" }} />
         
 
-        {/* Main content */}
         <div className="flex-1 flex items-center">
             <div className="grid w-full gap-10 lg:gap-12 grid-cols-1 lg:grid-cols-[1fr_360px]">
 
-            {/* Left — text */}
             <div className="flex flex-col justify-center">
 
-                {/* Eyebrow */}
                 <div className="flex items-center gap-3 mb-7">
                 <span
                     className="text-[11px] text-[#4a5a8a] tracking-[3px] uppercase"
@@ -80,7 +69,6 @@ export default function Hero() {
 
                 </div>
 
-                {/* Name */}
                 <h1
                 className="font-light leading-[0.9] tracking-[-4px] mb-8 text-[#d8e0f5]"
                 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(48px, 13vw, 108px)" }}
@@ -88,11 +76,9 @@ export default function Hero() {
                 Yessine
                 <br />
                 <em className="italic text-[#7aaaff]">Helal</em>
-                {/* The <em> tag uses Fraunces's true italic — more refined
-                    than applying CSS italic to a non-italic font. */}
+                
                 </h1>
 
-                {/* Animated title */}
                 <div
                 className="flex items-center gap-2 mb-8 text-[#8898c8] text-[15px]"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -100,16 +86,13 @@ export default function Hero() {
                 <span className="text-[#5b8ef5]">&gt;</span>
                 <span>{displayed}</span>
                 <span className="w-[8px] h-[15px] bg-[#7aaaff] animate-pulse inline-block" />
-                {/* Blinking block cursor — classic terminal aesthetic. */}
                 </div>
 
-                {/* Description */}
                 <p className="text-[15px] text-[#6b7db3] leading-[1.85] max-w-[420px] mb-10"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 {t.hero.bio}
                 </p>
 
-                {/* CTAs */}
                 <div className="flex gap-3">
                 <a
                     href="#projects"
@@ -130,12 +113,10 @@ export default function Hero() {
 
             </div>
 
-            {/* Right — Terminal */}
             <div className="flex items-center justify-center mt-8 lg:mt-0">
                 <div className="w-full rounded-xl overflow-hidden border border-white/[0.06] shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
                 style={{ background: "#0b0e1a" }}>
 
-                {/* Terminal bar */}
                 <div className="h-10 flex items-center px-4 gap-[7px] border-b border-white/[0.06]"
                     style={{ background: "#101426" }}>
                     <div className="w-[11px] h-[11px] rounded-full bg-[#ff5f57]" />
@@ -149,7 +130,6 @@ export default function Hero() {
                     </span>
                 </div>
 
-                {/* Terminal body */}
                 <div
                     className="p-5 text-[12.5px] leading-[2.1] pb-8"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -201,7 +181,6 @@ export default function Hero() {
             </div>
         </div>
 
-        {/* Bottom status strip */}
         <div className="border-t border-white/5 py-5 mt-10">
             <p
             className="text-center text-[10px] md:text-[11px] text-[#4a5a8a] tracking-[2px] leading-[2] px-2"

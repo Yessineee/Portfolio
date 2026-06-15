@@ -18,6 +18,24 @@ export const data={
 
     projects: [
       {
+        title_en: "NullThreat - PDF Threat Scanner",
+        title_fr: "NullThreat - Scanner de Menaces PDF",
+        featured: true,
+        confidential: false,
+        description_en: "A browser extension that automatically scans PDF downloads against VirusTotal's 90+ threat intelligence engines, delivering real-time threat scores and detailed engine breakdowns directly in the browser.",
+        description_fr: "Extension de navigateur qui analyse automatiquement les téléchargements PDF via les 90+ moteurs de VirusTotal, fournissant des scores de menace en temps réel et un détail complet par moteur directement dans le navigateur.",
+        tech: ["React", "Chrome Extension", "Tailwind CSS", "VirusTotal API"],
+        github: "https://github.com/Yessineee/NullThreat",
+        demo: null,
+        screenshots: [
+          { src: "/screenshots/nullthreat-popup.png", label_en: "Popup — Quick Status", label_fr: "Popup — Statut Rapide" },
+          { src: "/screenshots/nullthreat-overview.png", label_en: "Dashboard — Overview", label_fr: "Tableau de Bord — Vue d'ensemble" },
+          { src: "/screenshots/nullthreat-history.png", label_en: "Scan History", label_fr: "Historique des Analyses" },
+          { src: "/screenshots/nullthreat-threat-detail.png", label_en: "Threat Detail — Engine Breakdown", label_fr: "Détail de la Menace — Par Moteur" },
+          { src: "/screenshots/nullthreat-settings.png", label_en: "Settings", label_fr: "Paramètres" },
+        ],
+      },
+      {
         title_en: "National Hemodialysis Platform",
         title_fr: "Plateforme Nationale d'Hémodialyse",
         description_en: "Designed and developed a full-stack national platform for hemodialysis center management across Tunisia, in collaboration with the Ministry of Health (CIMS). Covers patient records, medical sessions, equipment tracking, staff management, and national reporting.",

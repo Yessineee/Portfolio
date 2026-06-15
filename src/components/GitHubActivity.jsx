@@ -25,7 +25,6 @@ export default function GitHubActivity() {
         .then(r => r.json()),
     ])
       .then(([contribData, profileData]) => {
-        // Process contributions into weeks
         const days = contribData.contributions
         const recentDays = days.slice(-182)
         const grouped = []
@@ -58,7 +57,6 @@ export default function GitHubActivity() {
   return (
     <div className="mt-14 pt-14 border-t border-white/5" ref={ref}>
 
-      {/* Header + stats row */}
       <div className="mb-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
           <p
@@ -94,7 +92,6 @@ export default function GitHubActivity() {
           )}
         </div>
 
-        {/* Context note */}
         <p
           className="text-[10px] text-[#5a6a9a] tracking-[1px]"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -104,13 +101,11 @@ export default function GitHubActivity() {
         
       </div>
 
-      {/* Month labels */}
       <div className="hidden sm:flex gap-[3px] w-full mb-1">
         {weeks.map((week, wi) => {
           const firstDay = week[0]?.date
           const date = new Date(firstDay)
           const isFirstWeekOfMonth = date.getDate() <= 7
-          // Only show month label on the first week of each month.
           return (
             <div key={wi} className="flex-1">
               {isFirstWeekOfMonth ? (
@@ -127,7 +122,6 @@ export default function GitHubActivity() {
       </div>
 
 
-      {/* Heatmap — full width */}
       <div className="flex gap-[3px] w-full">
         {weeks.map((week, wi) => (
           <div key={wi} className="flex flex-col gap-[3px] flex-1">
@@ -161,7 +155,6 @@ export default function GitHubActivity() {
         ))}
       </div>
 
-      {/* Legend */}
       <div className="flex items-center gap-[4px] mt-3 justify-end">
         <span
           className="text-[10px] text-[#4a5a8a] mr-1"

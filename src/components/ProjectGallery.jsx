@@ -64,7 +64,6 @@ export default function ProjectGallery({ images }) {
         </div>
       </div>
 
-      {/* Lightbox overlay */}
       {selected && (
         <div
           onClick={() => setSelected(null)}
