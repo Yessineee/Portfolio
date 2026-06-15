@@ -1,10 +1,14 @@
 import {data} from  "../data/content"
 import useScrollReveal from "../hooks/useScrollReveal"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 
 export default function Experience() {
   const headerRef = useScrollReveal({ delay: "0s", distance: "32px" })
   const timelineRef = useScrollReveal({ delay: "0.15s", distance: "32px" })
+  const { lang } = useLanguage()
+  const t = translations[lang]
 
     return (
       <section id="experience" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
@@ -15,13 +19,13 @@ export default function Experience() {
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Experience
+          {t.experience.label}
         </p>
         <h2
           className="font-light tracking-[-2px] leading-none text-[#d8e0f5]"
           style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(38px, 4vw, 54px)" }}
         >
-          Where I've <em className="italic text-[#7aaaff]">studied</em>
+          {t.experience.title1} <em className="italic text-[#7aaaff]">{t.experience.title2}</em>
         </h2>
       </div>
 
@@ -46,25 +50,20 @@ export default function Experience() {
                 className="text-[19px] font-normal text-[#d8e0f5] tracking-[-0.3px] mb-1"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                {edu.degree_en}
+                {lang === "fr" ? edu.degree_fr : edu.degree_en}
               </h3>
               <p
                 className="text-[12px] text-[#5b8ef5] tracking-[1px] mb-4"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                {edu.school_en}
+                {lang === "fr" ? edu.school_fr : edu.school_en}
               </p>
               <p
                 className="text-[13px] text-[#8898c8] leading-[1.75] mb-5"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Studied core IT concepts including software engineering,
-                algorithms, data structures, object-oriented programming,
-                databases, and web development. Completed a national-scale
-                final year project in collaboration with the Tunisian
-                Ministry of Health.
-                {/* Mentioning the PFE here too ties the Experience and
-                    Projects sections together — shows context and depth. */}
+                {t.experience.description}
+               
               </p>
 
               {/* Achievement badge */}
@@ -77,7 +76,7 @@ export default function Experience() {
                   className="text-[10px] text-[#7aaaff] tracking-[1.5px] uppercase"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  {edu.achievement_en}
+                  {lang === "fr" ? edu.achievement_fr : edu.achievement_en}
                 </span>
               </div>
 

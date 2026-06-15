@@ -2,12 +2,16 @@ import { ArrowUpRight, FolderCode, Mail } from "lucide-react"
 import { FaLinkedinIn } from "react-icons/fa"
 import { data } from "../data/content"
 import useScrollReveal from "../hooks/useScrollReveal"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 
 export default function Footer() {
 
   const year = new Date().getFullYear()
   const footerRef = useScrollReveal({ delay: "0s", distance: "16px" })
+  const { lang } = useLanguage()
+  const t = translations[lang]
 
   return (
       <footer className="px-6 md:px-14 py-7 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10" ref={footerRef}>
@@ -25,15 +29,15 @@ export default function Footer() {
         className="text-[11px] text-[#4a5a8a] tracking-[1px] text-center order-3 md:order-2"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
-        © {year} - Designed & built by Yessine Helal
+        {t.footer.copyright.replace("{year}", year)}
       </div>
 
       {/* Links */}
       <div className="flex items-center gap-7 order-2 md:order-3">
         {[
-          { label: "GitHub", href: data.github, icon: FolderCode },
-          { label: "LinkedIn", href: data.linkedin, icon: FaLinkedinIn },
-          { label: "Email", href: `mailto:${data.email}`, icon: Mail },
+          { label: t.footer.github, href: data.github, icon: FolderCode },
+          { label: t.footer.linkedin, href: data.linkedin, icon: FaLinkedinIn },
+          { label: t.footer.email, href: `mailto:${data.email}`, icon: Mail },
         ].map((link, index) => (
           <a
             key={index}

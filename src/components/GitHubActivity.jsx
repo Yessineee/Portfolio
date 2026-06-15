@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import useScrollReveal from "../hooks/useScrollReveal"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 const USERNAME = "Yessineee"
 
@@ -8,6 +10,9 @@ export default function GitHubActivity() {
   const [total, setTotal] = useState(0)
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
+
+  const { lang } = useLanguage()
+  const t = translations[lang]
 
   const ref = useScrollReveal({ delay: "0.3s", distance: "32px" })
 
@@ -60,15 +65,15 @@ export default function GitHubActivity() {
             className="text-[11px] text-[#6b7db3] tracking-[3px] uppercase"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            GitHub Activity
+            {t.github.label}
           </p>
 
           {profile && (
             <div className="flex items-center gap-4 md:gap-6 flex-wrap">
               {[
-                { label: "Public Repos", value: profile.public_repos },
-                { label: "Contributions", value: total },
-                { label: "Last Updated", value: new Date(profile.updated_at).toLocaleDateString("en-GB", { month: "short", year: "numeric" }) },
+                { label: t.github.repos, value: profile.public_repos },
+                { label: t.github.contributions, value: total },
+                { label: t.github.lastUpdated, value: new Date(profile.updated_at).toLocaleDateString("en-GB", { month: "short", year: "numeric" }) },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <span
@@ -94,7 +99,7 @@ export default function GitHubActivity() {
           className="text-[10px] text-[#5a6a9a] tracking-[1px]"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          * Contributions from private repos not shown — incl. national healthcare platform for the Tunisian Ministry of Health
+          {t.github.note}
         </p>
         
       </div>
@@ -113,7 +118,7 @@ export default function GitHubActivity() {
                   className="text-[9px] text-[#4a5a8a]"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  {date.toLocaleString("en", { month: "short" })}
+                  {date.toLocaleString(lang === "fr" ? "fr-FR" : "en", { month: "short" })}
                 </span>
               ) : null}
             </div>
@@ -128,27 +133,26 @@ export default function GitHubActivity() {
           <div key={wi} className="flex flex-col gap-[3px] flex-1">
             {week.map((day, di) => {
               const date = new Date(day.date)
-              const formatted = date.toLocaleDateString("en-GB", {
+              const formatted = date.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", {
                 weekday: "short",
                 day: "numeric",
                 month: "short",
                 year: "numeric",
               })
-              // Formats date as "Sat, 3 Jan 2026" — clean and readable.
-              const label = day.count === 0
-                ? `${formatted} - No contributions`
-                : `${formatted} - ${day.count} contribution${day.count > 1 ? "s" : ""}`
-              // Pluralizes "contribution" correctly.
+
+              const label = lang === "fr"
+                ? (day.count === 0
+                    ? `${formatted} - Aucune contribution`
+                    : `${formatted} - ${day.count} contribution${day.count > 1 ? "s" : ""}`)
+                : (day.count === 0
+                    ? `${formatted} - No contributions`
+                    : `${formatted} - ${day.count} contribution${day.count > 1 ? "s" : ""}`)
 
               return (
                 <div
                   key={di}
                   className={`rounded-[2px] ${getColor(day.level)} hover:opacity-70 transition-opacity duration-200 cursor-default`}
                   style={{ width: "100%", paddingBottom: "100%" }}
-                  // paddingBottom: 100% is a CSS trick to make an element
-                  // perfectly square regardless of its container width.
-                  // The element has 0 height but 100% padding pushes it down
-                  // to match its own width — always a perfect square.
                   title={label}
                 />
               )
@@ -163,7 +167,7 @@ export default function GitHubActivity() {
           className="text-[10px] text-[#4a5a8a] mr-1"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Less
+          {t.github.less}
         </span>
         {[0, 1, 2, 3, 4].map(level => (
           <div
@@ -175,7 +179,7 @@ export default function GitHubActivity() {
           className="text-[10px] text-[#4a5a8a] ml-1"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          More
+          {t.github.more}
         </span>
       </div>
 

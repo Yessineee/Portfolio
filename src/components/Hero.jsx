@@ -1,20 +1,27 @@
 import {useState,useEffect} from "react"
 import { CheckCircle2 } from "lucide-react"
 import {data} from "../data/content"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 
-const titles = [
-    "IT Student & Cybersecurity Enthusiast",
-    "Full-Stack Developer",
-    "ML & AI Explorer",
-    "Open Source Contributor",
-    "CTF Player & Security Learner"
-]
+// const titles = [
+//     "IT Student & Cybersecurity Enthusiast",
+//     "Full-Stack Developer",
+//     "ML & AI Explorer",
+//     "Open Source Contributor",
+//     "CTF Player & Security Learner"
+// ]
 
 export default function Hero() {
     const [displayed, setDisplayed] = useState("")
     const [titleIndex, setTitleIndex] = useState(0)
     const [deleting, setDeleting] = useState(false)
+
+    const { lang } = useLanguage()
+    const t = translations[lang]
+
+    const titles = t.hero.titles
 
     useEffect(() => {
     const current = titles[titleIndex]
@@ -36,7 +43,13 @@ export default function Hero() {
     }
 
     return () => clearTimeout(timeout)
-  }, [displayed, deleting, titleIndex])
+  }, [displayed, deleting, titleIndex, lang])
+
+  useEffect(() => {
+  setDisplayed("")
+  setDeleting(false)
+  setTitleIndex(0)
+}, [lang])
 
     return (
         <section className="relative min-h-screen pt-16 px-6 md:px-14 pb-0 flex flex-col border-b border-white/5 overflow-hidden">
@@ -93,7 +106,7 @@ export default function Hero() {
                 {/* Description */}
                 <p className="text-[15px] text-[#6b7db3] leading-[1.85] max-w-[420px] mb-10"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
-                {data.bio}
+                {t.hero.bio}
                 </p>
 
                 {/* CTAs */}
@@ -103,7 +116,7 @@ export default function Hero() {
                     className="inline-flex items-center px-7 py-3 bg-[#5b8ef5] text-white text-[11px] tracking-[1.5px] uppercase font-medium rounded-md hover:bg-[#4a7ef0] transition-all duration-200 hover:-translate-y-px"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                    View Work
+                    {t.hero.viewWork}
                 </a>
                 <a
                     href="/yessine_helal.pdf"
@@ -111,7 +124,7 @@ export default function Hero() {
                     className="inline-flex items-center px-7 py-3 bg-transparent text-[#d8e0f5] text-[11px] tracking-[1.5px] uppercase font-medium rounded-md border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-200"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                    Download CV
+                    {t.hero.downloadCV}
                 </a>
                 </div>
 
@@ -143,28 +156,28 @@ export default function Hero() {
                 >
                     <div className="flex gap-2">
                     <span className="text-[#7aaaff]">~$</span>
-                    <span className="text-[#8898c8]">whoami</span>
+                    <span className="text-[#8898c8]">{t.hero.terminal.whoami}</span>
                     </div>
                     <div className="pl-5 text-[#5af078]">yessine_helal</div>
 
                     <div className="flex gap-2">
                     <span className="text-[#7aaaff]">~$</span>
-                    <span className="text-[#8898c8]">cat skills.txt</span>
+                    <span className="text-[#8898c8]">{t.hero.terminal.skills}</span>
                     </div>
                     <div className="pl-5 text-[#7aaaff]">Python · Java · React · Spring Boot</div>
                     <div className="pl-5 text-[#7aaaff]">Kali Linux · Nmap · Wireshark</div>
 
                     <div className="flex gap-2">
                     <span className="text-[#7aaaff]">~$</span>
-                    <span className="text-[#8898c8]">cat status.txt</span>
+                    <span className="text-[#8898c8]">{t.hero.terminal.status}</span>
                     </div>
                     <div className="pl-5 flex items-center gap-2 text-[#5af078]">
                     <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                    <span>Open to internships</span>
+                    <span>{t.hero.terminal.internships}</span>
                     </div>
                     <div className="pl-5 flex items-center gap-2 text-[#5af078]">
                     <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                    <span>Open to collaborations</span>
+                    <span>{t.hero.terminal.collabs}</span>
                     </div>
 
                     <div className="flex gap-2">
@@ -194,11 +207,7 @@ export default function Hero() {
             className="text-center text-[10px] md:text-[11px] text-[#4a5a8a] tracking-[2px] leading-[2] px-2"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-            Graduate of Faculty of Science of Tunis
-            <span className="mx-4 text-[#1a2040]">·</span>
-            Building toward Cybersecurity Engineering
-            <span className="mx-4 text-[#1a2040]">·</span>
-            Certified by AWS · Cisco · NVIDIA
+            {t.hero.statusLine}
             </p>
             
         </div>

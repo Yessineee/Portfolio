@@ -2,12 +2,16 @@ import { ArrowUpRight } from "lucide-react"
 import {data} from "../data/content";
 import useScrollReveal from "../hooks/useScrollReveal"
 import ProjectGallery from "./ProjectGallery"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 
 
 export default function Projects() {
   const headerRef = useScrollReveal({ delay: "0s", distance: "32px" })
   const listRef = useScrollReveal({ delay: "0.15s", distance: "32px" })
+  const { lang } = useLanguage()
+  const t = translations[lang]
 
     return (
       <section id="projects" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
@@ -18,13 +22,13 @@ export default function Projects() {
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Projects
+          {t.projects.label}
         </p>
         <h2
           className="font-light tracking-[-2px] leading-none text-[#d8e0f5]"
           style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(38px, 4vw, 54px)" }}
         >
-          What I've <em className="italic text-[#7aaaff]">built</em>
+          {t.projects.title1} <em className="italic text-[#7aaaff]">{t.projects.title2}</em>
         </h2>
       </div>
 
@@ -37,7 +41,7 @@ export default function Projects() {
             className="grid gap-6 px-4 md:px-8 py-7 md:py-9 bg-[#06080f] hover:bg-[#0b0e1a] transition-colors duration-300 items-start grid-cols-1 md:grid-cols-[1fr_180px]"
           >
             {/* Left — project info */}
-            <div>
+            <div className="min-w-0">
 
               {/* Title row */}
               <div className="flex items-center gap-3 mb-3">
@@ -45,7 +49,7 @@ export default function Projects() {
                   className="text-[20px] font-normal text-[#d8e0f5] tracking-[-0.4px]"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  {project.title}
+                  {lang === "fr" ? project.title_fr : project.title_en}
                 </h3>
 
                 {/* Featured badge */}
@@ -54,7 +58,7 @@ export default function Projects() {
                     className="text-[9px] px-2 py-[3px] border border-[#5b8ef5]/30 text-[#7aaaff] rounded-[3px] tracking-[2px] uppercase"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    Featured
+                    {t.projects.featured}
                   </span>
                 )}
 
@@ -64,11 +68,10 @@ export default function Projects() {
                     className="text-[9px] px-2 py-[3px] border border-white/10 text-[#4a5a8a] rounded-[3px] tracking-[2px] uppercase"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    Confidential
+                    {t.projects.confidential}
                   </span>
                 )}
-                {/* Only renders if project.confidential is true —
-                    signals a serious private project without apology. */}
+                
               </div>
 
               {/* Description */}
@@ -76,7 +79,7 @@ export default function Projects() {
                 className="text-[13px] text-[#8898c8] leading-[1.75] mb-5 max-w-[600px]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                {project.description}
+                {lang === "fr" ? project.description_fr : project.description_en}
               </p>
 
               {/* Tech stack */}
@@ -108,7 +111,7 @@ export default function Projects() {
                   className="inline-flex items-center gap-2 text-[11px] text-[#4a5a8a] hover:text-[#7aaaff] tracking-[1.5px] uppercase transition-colors duration-200"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  <span>GitHub</span>
+                  <span>{t.projects.github}</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
               )}
@@ -120,7 +123,7 @@ export default function Projects() {
                   className="inline-flex items-center gap-2 text-[11px] text-[#4a5a8a] hover:text-[#7aaaff] tracking-[1.5px] uppercase transition-colors duration-200"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  <span>Live Demo</span>
+                  <span>{t.projects.liveDemo}</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
               )}
@@ -129,7 +132,7 @@ export default function Projects() {
                   className="text-[11px] text-[#4a5a8a] tracking-[1.5px] uppercase text-left md:text-right"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  Private repo
+                  {t.projects.privateRepo}
                 </span>
                 
               )}

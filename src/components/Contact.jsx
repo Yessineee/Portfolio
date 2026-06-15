@@ -4,6 +4,8 @@ import { ArrowUpRight, CheckCircle2, FolderCode, Mail, XCircle } from "lucide-re
 import { FaLinkedinIn } from "react-icons/fa"
 import { data } from "../data/content"
 import useScrollReveal from "../hooks/useScrollReveal"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
@@ -17,6 +19,8 @@ export default function Contact() {
   const headerRef = useScrollReveal({ delay: "0s", distance: "32px" })
   const leftRef = useScrollReveal({ delay: "0.1s", distance: "32px" })
   const rightRef = useScrollReveal({ delay: "0.2s", distance: "32px" })
+  const { lang } = useLanguage()
+  const t = translations[lang]
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -37,13 +41,13 @@ export default function Contact() {
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Contact
+          {t.contact.label}
         </p>
         <h2
           className="font-light tracking-[-2px] leading-none text-[#d8e0f5]"
           style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(38px, 4vw, 54px)" }}
         >
-          Get in <em className="italic text-[#7aaaff]">touch</em>
+          {t.contact.title1} <em className="italic text-[#7aaaff]">{t.contact.title2}</em>
         </h2>
       </div>
 
@@ -54,16 +58,14 @@ export default function Contact() {
             className="text-[15px] text-[#8898c8] leading-[1.9] mb-6 max-w-sm"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            Looking for internship opportunities in cybersecurity or
-            software engineering. Open to collaborations and
-            interesting projects.
+            {t.contact.intro}
           </p>
 
           <div className="flex flex-col">
             {[
-              { label: "Email", value: data.email, href: `mailto:${data.email}`, icon: Mail },
-              { label: "GitHub Profile", value: "github.com/Yessineee", href: data.github, icon: FolderCode },
-              { label: "LinkedIn Profile", value: "linkedin.com/in/yessine-helal", href: data.linkedin, icon: FaLinkedinIn },
+              { label: t.contact.links.email, value: data.email, href: `mailto:${data.email}`, icon: Mail },
+              { label: t.contact.links.github, value: "github.com/Yessineee", href: data.github, icon: FolderCode },
+              { label: t.contact.links.linkedin, value: "linkedin.com/in/yessine-helal", href: data.linkedin, icon: FaLinkedinIn },
             ].map((link, index) => (
               <a
                 key={index}
@@ -105,13 +107,13 @@ export default function Contact() {
               className="text-[10px] text-[#4a5a8a] tracking-[2px] uppercase"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              Name
+              {t.contact.form.name}
             </label>
             <input
               type="text"
               name="name"
               required
-              placeholder="Your name"
+              placeholder={t.contact.form.namePlaceholder}
               className="bg-white/[0.025] border border-white/[0.06] rounded-md px-4 py-3 text-[13px] text-[#d8e0f5] placeholder-[#4a5a8a] outline-none focus:border-[#5b8ef5]/40 transition-colors duration-200"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
@@ -122,13 +124,13 @@ export default function Contact() {
               className="text-[10px] text-[#4a5a8a] tracking-[2px] uppercase"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              Email
+              {t.contact.form.email}
             </label>
             <input
               type="email"
               name="email"
               required
-              placeholder="your@email.com"
+              placeholder={t.contact.form.emailPlaceholder}
               className="bg-white/[0.025] border border-white/[0.06] rounded-md px-4 py-3 text-[13px] text-[#d8e0f5] placeholder-[#4a5a8a] outline-none focus:border-[#5b8ef5]/40 transition-colors duration-200"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
@@ -139,13 +141,13 @@ export default function Contact() {
               className="text-[10px] text-[#4a5a8a] tracking-[2px] uppercase"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              Message
+              {t.contact.form.message}
             </label>
             <textarea
               name="message"
               required
               rows={5}
-              placeholder="Your message..."
+              placeholder={t.contact.form.messagePlaceholder}
               className="bg-white/[0.025] border border-white/[0.06] rounded-md px-4 py-3 text-[13px] text-[#d8e0f5] placeholder-[#4a5a8a] outline-none focus:border-[#5b8ef5]/40 transition-colors duration-200 resize-none"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
@@ -157,7 +159,7 @@ export default function Contact() {
               className="mt-2 py-3 bg-[#5b8ef5] text-white text-[11px] tracking-[1.5px] uppercase font-medium rounded-md hover:bg-[#4a7ef0] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              {status === "sending" ? "Sending..." : "Send Message"}
+              {status === "sending" ? t.contact.form.sending : t.contact.form.send}
             </button>
 
             {status === "success" && (
@@ -166,7 +168,7 @@ export default function Contact() {
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                <span>Message sent successfully</span>
+                <span>{t.contact.form.success}</span>
               </p>
             )}
             {status === "error" && (
@@ -175,7 +177,7 @@ export default function Contact() {
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 <XCircle className="h-3.5 w-3.5 shrink-0" />
-                <span>Something went wrong - try again</span>
+                <span>{t.contact.form.error}</span>
               </p>
             )}
 

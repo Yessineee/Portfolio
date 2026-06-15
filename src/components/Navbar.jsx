@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
-import { data } from "../data/content"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
+import { Globe } from "lucide-react"
+
 
 
 export default function Navbar() {
@@ -7,7 +10,8 @@ export default function Navbar() {
     const [activeSection, setActiveSection] = useState("about")
     const [mobileOpen, setMobileOpen] = useState(false)
 
-
+    const { lang, toggleLang } = useLanguage()
+    const t = translations[lang]
 
     useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -54,24 +58,22 @@ export default function Navbar() {
 
       {/* Nav links */}
       <ul className="hidden md:flex gap-10 list-none">
-        {["About", "Skills", "Projects", "Experience", "Certifications", "Contact"].map((item) => {
-          const id = item.toLowerCase()
-          const isActive = activeSection === id
-
-          return (
-            <li key={item}>
-              <a
-                href={`#${id}`}
-                className={`text-[11px] tracking-[1.5px] uppercase transition-colors duration-200 ${
-                  isActive ? "text-[#7aaaff]" : "text-[#4a5a8a] hover:text-[#d8e0f5]"
-                }`}
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                {item}
-              </a>
+        {["about", "skills", "projects", "experience", "certifications", "contact"].map((id) => {
+        const isActive = activeSection === id
+        return (
+          <li key={id}>
+            <a
+              href={`#${id}`}
+              className={`text-[11px] tracking-[1.5px] uppercase transition-colors duration-200 ${
+                isActive ? "text-[#7aaaff]" : "text-[#4a5a8a] hover:text-[#d8e0f5]"
+              }`}
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              {t.nav[id]}
+            </a>
           </li>
-          )    
-        })}
+        )
+      })}
       </ul>
 
       {/* Status indicator */}
@@ -82,9 +84,18 @@ export default function Navbar() {
           className="text-[11px] text-[#7aaaff] tracking-[1px]"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Open to internships
+          {t.nav.status}
         </span>
       </div>
+      <button
+        onClick={toggleLang}
+        className="hidden md:flex items-center gap-1.5 px-2.5 h-7 rounded border border-white/10 text-[10px] tracking-[1px] text-[#8898c8] hover:border-[#5b8ef5]/30 hover:text-[#7aaaff] transition-all duration-200"
+        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+      >
+        <Globe className="h-3.5 w-3.5" />
+        {lang === "en" ? "FR" : "EN"}
+              
+      </button>
         
       {/* Hamburger button — mobile only */}
         <button
@@ -101,7 +112,7 @@ export default function Navbar() {
         {mobileOpen && (
           <div className="md:hidden fixed inset-x-0 top-16 bottom-0 z-[60] overflow-x-auto overflow-y-hidden bg-[#06080f]/98 px-6 py-8 pb-12 backdrop-blur-xl">
           <div className="flex min-w-max items-center gap-4 pb-12 pt-1 pr-4">
-            {["About", "Skills", "Projects", "Experience", "Certifications", "Contact"].map((item) => {
+            {["about", "skills", "projects", "experience", "certifications", "contact"].map((item) => {
               const id = item.toLowerCase()
               const isActive = activeSection === id
               return (
@@ -114,7 +125,7 @@ export default function Navbar() {
                   }`}
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  {item}
+                  {t.nav[item]}
                 </a>
               )
             })}
@@ -125,9 +136,17 @@ export default function Navbar() {
                 className="text-[11px] text-[#7aaaff] tracking-[1px]"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                Open to internships
+                {t.nav.status}
               </span>
             </div>
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 px-2.5 h-7 rounded border border-white/10 text-[10px] tracking-[1px] text-[#8898c8] hover:border-[#5b8ef5]/30 hover:text-[#7aaaff] transition-all duration-200"
+            >
+              <Globe className="h-3.5 w-3.5" />
+              {lang === "en" ? "FR" : "EN"}
+              
+            </button>
             </div>
           </div>
         )}

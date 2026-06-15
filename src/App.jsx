@@ -7,21 +7,24 @@ import Experience from './components/Experience'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { LanguageProvider } from "./context/LanguageContext.jsx"
 
 function App() {
 
   return (
-    <main className='bg-[#050508] text-white min-h-screen'>
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Certifications />
-      <Contact />
-      <Footer />
-    </main>
+    <LanguageProvider>
+      <main className='bg-[#050508] text-white min-h-screen'>
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Certifications />
+        <Contact />
+        <Footer />
+      </main>
+    </LanguageProvider>
   )
 }
 

@@ -1,9 +1,13 @@
 import { useRef, useState } from "react"
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 export default function ProjectGallery({ images }) {
   const scrollRef = useRef()
   const [selected, setSelected] = useState(null)
-  // selected holds the currently zoomed image, or null if none.
+
+  const { lang } = useLanguage()
+  const t = translations[lang]
 
   const scroll = (direction) => {
     scrollRef.current.scrollBy({ left: direction * 360, behavior: "smooth" })
@@ -14,7 +18,7 @@ export default function ProjectGallery({ images }) {
       <div className="relative mt-6">
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-2 scroll-smooth"
+          className="flex gap-4 overflow-x-auto pb-2 scroll-smooth pr-8 md:pr-14"
           style={{ scrollbarWidth: "none" }}
         >
           {images.map((img, i) => (
@@ -34,11 +38,15 @@ export default function ProjectGallery({ images }) {
                 className="text-[11px] text-[#4a5a8a] tracking-[1px] mt-2"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                {img.label}
+                {lang === "fr" ? img.label_fr : img.label_en}
               </p>
             </div>
           ))}
         </div>
+        <div
+          className="absolute top-0 right-0 bottom-2 w-12 md:w-20 pointer-events-none"
+          style={{ background: "linear-gradient(to right, transparent, #06080f)" }}
+        />
 
         <div className="flex gap-2 mt-3">
           <button
@@ -64,8 +72,7 @@ export default function ProjectGallery({ images }) {
           
         >
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-            {/* stopPropagation prevents closing when clicking the image itself —
-                only clicking the dark backdrop closes it. */}
+            
             <div className="rounded-lg overflow-hidden border border-white/10">
               <div className="h-9 flex items-center px-3 gap-[6px] bg-[#101426]">
                 <div className="w-[10px] h-[10px] rounded-full bg-[#ff5f57]" />
@@ -78,7 +85,7 @@ export default function ProjectGallery({ images }) {
               className="text-[12px] text-[#8898c8] tracking-[1px] mt-3 text-center"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              {selected.label} : Click anywhere to close
+              {lang === "fr" ? selected.label_fr : selected.label_en} : {t.projects.closeHint}
             </p>
           </div>
         </div>

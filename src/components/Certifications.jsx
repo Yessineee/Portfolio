@@ -1,7 +1,8 @@
 import { ArrowUpRight } from "lucide-react"
 import { data } from "../data/content"
 import useScrollReveal from "../hooks/useScrollReveal"
-
+import { useLanguage } from "../hooks/useLanguage"
+import { translations } from "../data/translations"
 
 
 
@@ -21,6 +22,12 @@ export default function Certifications() {
   const headerRef = useScrollReveal({ delay: "0s", distance: "32px" })
   const gridRef = useScrollReveal({ delay: "0.15s", distance: "32px" })
   const bottomRef = useScrollReveal({ delay: "0.25s", distance: "32px" })
+  const { lang } = useLanguage()
+  const t = translations[lang]
+  const formatDate = (dateStr) => {
+    const [month, year] = dateStr.split(" ")
+    return `${t.certifications.months[month]} ${year}`
+  }
 
   return (
       <section id="certifications" className="px-6 md:px-14 py-16 md:py-24 border-b border-white/5 relative z-10">
@@ -30,13 +37,13 @@ export default function Certifications() {
           className="text-[11px] text-[#5b8ef5] tracking-[3px] uppercase mb-3"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Certifications
+          {t.certifications.label}
         </p>
         <h2
           className="font-light tracking-[-2px] leading-none text-[#d8e0f5]"
           style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(38px, 4vw, 54px)" }}
         >
-          My <em className="italic text-[#7aaaff]">credentials</em>
+          {t.certifications.title1} <em className="italic text-[#7aaaff]">{t.certifications.title2}</em>
         </h2>
       </div>
 
@@ -75,7 +82,7 @@ export default function Certifications() {
                   className="text-[11px] text-[#4a5a8a]"
                   style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
-                  {cert.date}
+                  {formatDate(cert.date)}
                 </span>
                 <a
                   href={cert.credential}
@@ -87,7 +94,7 @@ export default function Certifications() {
                     color: config?.color,
                   }}
                 >
-                  <span>View credential</span>
+                  <span>{t.certifications.viewCredential}</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
               </div>
@@ -103,7 +110,7 @@ export default function Certifications() {
           className="text-[11px] text-[#4a5a8a] tracking-[2px] uppercase"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          Continuously learning
+          {t.certifications.bottomNote}
         </span>
         <div className="flex-1 h-px bg-white/5" />
       </div>
