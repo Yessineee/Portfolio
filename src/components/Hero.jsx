@@ -102,7 +102,7 @@ export default function Hero() {
                     {t.hero.viewWork}
                 </a>
                 <a
-                    href="/yessine_helal.pdf"
+                    href={lang === "fr" ? "/yessine_helal_fr.pdf" : "/yessine_helal_en.pdf"}
                     download
                     className="inline-flex items-center px-7 py-3 bg-transparent text-[#d8e0f5] text-[11px] tracking-[1.5px] uppercase font-medium rounded-md border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-200"
                     style={{ fontFamily: "'Inter', sans-serif" }}
